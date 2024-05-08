@@ -1,3 +1,1 @@
-const lcmRecursive = (a, b) => {
-  return (a * b) / gcdRecursive(a, b);
-};
+const head = (arr) => arr[0];
