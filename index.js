@@ -1,12 +1,22 @@
-function longestCommonSubsequence(text1, text2) {
-  const m = text1.length;
-  const n = text2.length;
-  const dp = Array.from(Array(m + 1), () => Array(n + 1).fill(0));
-  for (let i = 1; i <= m; i++) {
-    for (let j = 1; j <= n; j++) {
-      if (text1[i - 1] === text2[j - 1]) dp[i][j] = dp[i - 1][j - 1] + 1;
-      else dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
-    }
-  }
-  return dp[m][n];
+function minStack() {
+  this.stack = [];
+  this.minStack = [];
 }
+minStack.prototype.push = function (x) {
+  this.stack.push(x);
+  if (
+    this.minStack.length === 0 ||
+    x <= this.minStack[this.minStack.length - 1]
+  )
+    this.minStack.push(x);
+};
+minStack.prototype.pop = function () {
+  if (this.stack.pop() === this.minStack[this.minStack.length - 1])
+    this.minStack.pop();
+};
+minStack.prototype.top = function () {
+  return this.stack[this.stack.length - 1];
+};
+minStack.prototype.getMin = function () {
+  return this.minStack[this.minStack.length - 1];
+};
