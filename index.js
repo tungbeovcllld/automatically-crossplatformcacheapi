@@ -1,22 +1,17 @@
-function minStack() {
-  this.stack = [];
-  this.minStack = [];
+function countAndSay(n) {
+  let result = "1";
+  for (let i = 1; i < n; i++) {
+    let temp = "";
+    let count = 1;
+    for (let j = 0; j < result.length; j++) {
+      if (result[j] === result[j + 1]) {
+        count++;
+      } else {
+        temp += count + result[j];
+        count = 1;
+      }
+    }
+    result = temp;
+  }
+  return result;
 }
-minStack.prototype.push = function (x) {
-  this.stack.push(x);
-  if (
-    this.minStack.length === 0 ||
-    x <= this.minStack[this.minStack.length - 1]
-  )
-    this.minStack.push(x);
-};
-minStack.prototype.pop = function () {
-  if (this.stack.pop() === this.minStack[this.minStack.length - 1])
-    this.minStack.pop();
-};
-minStack.prototype.top = function () {
-  return this.stack[this.stack.length - 1];
-};
-minStack.prototype.getMin = function () {
-  return this.minStack[this.minStack.length - 1];
-};
