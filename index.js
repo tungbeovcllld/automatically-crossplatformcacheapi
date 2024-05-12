@@ -1,17 +1,7 @@
-function countAndSay(n) {
-  let result = "1";
-  for (let i = 1; i < n; i++) {
-    let temp = "";
-    let count = 1;
-    for (let j = 0; j < result.length; j++) {
-      if (result[j] === result[j + 1]) {
-        count++;
-      } else {
-        temp += count + result[j];
-        count = 1;
-      }
-    }
-    result = temp;
+const fibonacci = (n) => {
+  const sequence = [0, 1];
+  for (let i = 2; i <= n; i++) {
+    sequence.push(sequence[i - 1] + sequence[i - 2]);
   }
-  return result;
-}
+  return sequence;
+};
