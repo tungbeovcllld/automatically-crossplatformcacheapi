@@ -1,8 +1,11 @@
-function minCostClimbingStairs(cost) {
-  const n = cost.length;
-  const dp = new Array(n + 1).fill(0);
-  for (let i = 2; i <= n; i++) {
-    dp[i] = Math.min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2]);
+function quickSort(arr) {
+  if (arr.length <= 1) return arr;
+  const pivot = arr[Math.floor(arr.length / 2)];
+  const left = [];
+  const right = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < pivot) left.push(arr[i]);
+    else if (arr[i] > pivot) right.push(arr[i]);
   }
-  return dp[n];
+  return quickSort(left).concat([pivot]).concat(quickSort(right));
 }
